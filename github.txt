@@ -16,6 +16,8 @@ git commit -m "xxx"
 
 git push -u origin master分支 or 其他分支
 
+修改本地文件后，可以通过git checkout -- file_name ，恢复修改前状态
+
 git pull origin master
 
 

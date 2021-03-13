@@ -1,0 +1,9 @@
+
+网络字节序 Network Order
+
+TCP/IP各层协议将字节序定义为Big-Endian，因此TCP/IP协议中使用的字节序通常称之为网络字节序。
+数据的高位存放于内存的低地址；
+
+主机序 Host Orader
+
+它遵循Little-Endian规则。所以当两台主机之间要通过TCP/IP协议进行通信的时候就需要调用相应的函数进行主机序（Little-Endian）和网络序（Big-Endian）的转换。
