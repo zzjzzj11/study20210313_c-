@@ -37,14 +37,14 @@ public:
 	{
 	}
 
-	void insertData(std::string name , struct key_value& tmp )
+	void insertData(std::string& name , struct key_value& tmp )
 	{
 		key_value_list.push_back(tmp);
 		//mapData.insert(std::make_pair(name , key_value_list));
 		mapData[name] = key_value_list;
 	}
 	
-	std::map<std::string, std::list<key_value>> getMapData()
+	std::map<std::string, std::list<key_value>>& getMapData()
 	{
 		return mapData;
 	}
@@ -54,7 +54,7 @@ public:
 
 int main(int argc, char** argv )
 {
-	const std::string str =  "asdfghjkl/qwer"; 
+	std::string str =  "asdfghjkl/qwer"; 
 	//const std::string str{"asdfghjkl/qwer"};
 	const int MaxPathLength = 50;
 	std::array<char , MaxPathLength> arr{};
@@ -68,22 +68,22 @@ int main(int argc, char** argv )
 	std::cout << "work Path :" << path <<std::endl;	
 
 	std::cout << "work path : " << std::string{path != NULL ? path : ""} << std::endl;
-
 	PortConfig::key_value tmp{"num1","98",{1,1}};
 	PortConfig::key_value tmp1{"num2","99",{1,0}};
 
 	struct PortConfig PortObject{};
 	
-	PortObject.insertData("zzj", tmp);
-	PortObject.insertData("zzj",tmp1);
+	PortObject.insertData(str, tmp);
+	PortObject.insertData(str,tmp1);
 
 	auto mapData = PortObject.getMapData();
 	
 	std::map<std::string,std::list<PortConfig::key_value>>::iterator it ;
 	for (it = mapData.begin();it != mapData.end();it++)
 	{
-		if(it->first == "zzj")
+		if(it->first == str)
 		{
+			std::cout <<str << std::endl;
 			for(auto lst = it->second.begin(); lst != it->second.end();lst++)
 			{
 				std::cout << "key: " << lst->key <<" value: " << lst->value ;
