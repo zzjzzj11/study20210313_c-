@@ -82,7 +82,7 @@ int main(int argc , char** argv)
     std::string path{"/home/zzj/zzj/git/study20210313_c-/code_fragment/tmp"};
     make_dirs(path, S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
 
-    //得到dir file name 
+    //得到指定目录下的匹配文件
     glob_t buf;
     std::vector<std::string> vec;
     int i = 0;
