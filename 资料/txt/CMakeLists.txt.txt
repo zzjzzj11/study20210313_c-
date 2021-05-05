@@ -1,0 +1,54 @@
+
+
+#1.cmake verson，指定cmake版本
+cmake_minimum_required(VERSION 3.2)
+
+#2.project name，指定项目的名称，一般和项目的文件夹名称对应
+PROJECT(ara_PM
+		VERSION 2.2
+		LANGUAGES CXX		
+)
+设置以下变量 "PROJECT_NAME" 
+			 "PROJECT_SOURCE_DIR" 
+			 "<PROJECT-NAME>_SOURCE_DIR" 
+			 "PROJECT_BINARY_DIR" 
+			 "<PROJECT-NAME>_BINARY_DIR"
+			 "PROJECT_VERSION_MAJOR"   2
+			 "PROJECT_VERSION_MINOR"   2
+			 "PROJECT_VERSION_PATCH"   
+			 "PROJECT_VERSION_TWEAK"  
+			 
+
+#3.head file path，头文件目录
+INCLUDE_DIRECTORIES(
+include
+)
+
+#4.message("project name :" ${PROJECT_NAME})
+
+#5.CMAKE_BUILD_TYPE设置编译类型，可以去枚举值 Debug Release RelWithDebInfo MinSizeRel
+	当设置为debug时， Cmake使用变量 CMAKE_FLAGS_DEBUG 和 CMAKE_C_FLAGS_DEBUG中字符串作为编译选项生成makefile；
+	当设置为release时，Cmake使用变量 CMAKE_CXX_FLAGS_RELEASE 和 CMAKE_CFLAGS_RELEASE中字符串作为编译选项生成makefile；
+	set(CMAKE_BUILD_TYPE Debug CACHE STRING "set build type to debug")
+	or cmake -DCMAKE_BUILD_TYPE=debug
+
+
+	CMAKE_CXX_FLAGS_DEBUG
+    CMAKE_CXX_FLAGS_RELEASE
+	set(CNAKE_CXX_FLAGS_DEBUG "ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+	set(CNAKE_CXX_FLAGS_RELEASE "ENV{CXXFLAGS} -O3 -Wall ")
+	-O3 优化级别 最高
+	-O0 优化级别 不做优化
+	
+#6.CMAKE_CXX_FLAGS 使用set设置时不要覆盖，保持默认值，添加
+eg：
+	set(LOCAL_CXX_FLAGS "-fPIC  -fPE")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LOCAL_CXX_FLAGS}")
+	
+	
+	
+#7 CMAKE_MODEL_PATH
+工程复杂时，需要一些cmake模块，通过set设置，搜索.cmake路径， 与find_package() 和 include() 配合使用
+
+
+#8 option/cmake_dependent_option
