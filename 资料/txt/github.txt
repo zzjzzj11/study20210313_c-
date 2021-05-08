@@ -22,11 +22,42 @@ git pull origin master
 
 回退版本
 git reset --hard HEAD^
+git reset --hard id
 
 
 
+git add a.txt 后且没有commit时取消 add 暂时存放到文件： git reset HEAD a.txt
 
 
+输出工作区和暂存区到不同 git diff
+展示暂存区和最近版本的不同 git diff --cached
+展示暂存区工作区和最近版本的不同  git diff HEAD
+//展示本地仓库中任意两个commit之间到文件变动  git diff commit-id commit-id
+
+
+git branch -vv 展示本地分支关联远程仓库
+git branch -r 列出远程分支
+git branch -a 列出本地分支和远程分支
+
+git checkout -b <branch-name>   创建且切换到本地分支
+git branch -d <local-branch-name> 删除本地分支
+git branch -m <new-branch-name>   重命名本地分支
+git checkout -  快速切换到上一个分支
+
+git ls-files -t 展示所有tracked的文件
+git ls-files --others 展示所有untracked的文件
+git status --ignored 展示所有忽略的文件
+
+
+git clean <file-name> -f 强制删除untracked 的文件
+git clean <directory-name> -df 强制删除untracked的文件夹
+
+
+
+git stash   存储当前的修改但不用提交commit
+git stash -u  保存当前状态包括untracked 的文件
+git stash list
+git stash pop
 
 
 
